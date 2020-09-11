@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>無題ドキュメント</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<style>
+	[v-cloak] {
+	  display: none;
+	}
+	</style>
+</head>
+
+<body>
+	<h1>Vue Numbers</h1>
+	<div id="app">
+		<div class="ruleBtn"><button v-on:click="ruleShow = !ruleShow">>ルールを見る</button></div>
+		<transition name="modalFade" v-cloak>
+			<div id="overlay" v-on:click.self="ruleShow = !ruleShow" v-if="ruleShow">
+				<div class="content">
+					<slot name="aa">
+						<button class="close" v-on:click="ruleShow = !ruleShow"><span class="material-icons">close</span></button>
+						<p>コンピューターが設定した3桁の数字を当てるゲームです。<br>
+						0～9までの数字を使っており、同じ数字は一度しか使われません。</p>
+
+						<P class="mt20">入力したら「答える」ボタンを押してください。<br>
+						答えが違っていた場合、答えに対してEATとBITEが表示されます。</P>
+
+						<P class="mt20">・EAT→数字と位が一致していた数<br>
+						・BITE→使用している数字は合っているが、位が違う数</P>
+
+						<p class="mt20">例）正解が「379」に対して以下のように答えた場合<br>
+						690と答えた場合→ 0EAT　1BITE<br>
+						397と答えた場合→ 1EAT　2BITE<br>
+						821と答えた場合→ 0EAT　0BITE</p>
+
+						<p class="mt20">より少ない回答数での正解を目指してください。</p>
+					</slot>
+				</div>
+			</div>
+		</transition>
+
+		<div v-if="!start" class="startBtn"><button v-on:click="startBtn">スタート！</button></div>
+		<div v-if="start" class="gameBlock">
+			<div class="inputBlock">
+				<input class="inputNum" type="tel" maxlength="3" v-model="inputNumber" disabled>
+				<div>
+					<div class="numPanel" v-if="inputNumber.length<3">
+						<button v-for="(num, index) in number" v-on:click="input">{{num}}</button>
+					</div>
+					<div v-else>
+						<div class="btnBlock">
+							<button class="resetBtn" v-on:click="reset">リセット</button>
+							<button class="sendBtn" v-on:click="send">答える</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="resultBlock">
+				<p class="resultHead">回答結果</p>
+				<ul class="resultList" v-if="0<answeredCount">
+					<li v-for="item in answerList">答え{{item.out}}：結果{{item.Eat}}EAT {{item.Bite}}BITE</li>
+				</ul>
+			</div>
+			<p v-if="cleared">正解です！{{answeredCount}}回で正解</p>
+		</div>
+		{{ $data }}
+		
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>

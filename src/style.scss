@@ -1,0 +1,371 @@
+@charset "utf-8";
+
+$breakPoint:768px;
+$baseFont:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+
+html,body,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+article,aside,details,figcaption,figure,main,footer,header,hgroup,menu,nav,section {
+  display: block;
+}
+
+html {
+  overflow-y: scroll;
+  font-size: 100%;
+}
+
+blockquote,q {
+  quotes: none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+  content: '';
+  content: none;
+}
+
+input,textarea,button {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+ol,ul {
+  list-style: none;
+}
+
+ul,ol {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,th {
+  text-align: left;
+}
+
+strong {
+  font-weight: bold !important;
+}
+
+img {
+  max-width: 100%;
+
+  @media all and (min-width: $breakPoint) {
+    vertical-align: top;
+    max-width: 100%;
+    height: auto;
+    border: none;
+    box-sizing: border-box;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+button {
+  background: transparent;
+}
+
+body {
+  min-width: 320px;
+  height: 100%;
+  font-size: 14px;
+  font-family: $baseFont;
+  line-height: 1.6;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  color: #323232;
+
+  @media all and (min-width: $breakPoint) {
+    min-width: 960px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  -webkit-tap-highlight-color: rgba(100, 100, 100, 0.5);
+}
+
+a:hover {
+  color: #3F88E5;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #0F218B;
+}
+
+input::placeholder {
+  color: #858585;
+}
+
+.onlyPC {
+  display: none;
+
+  @media all and (min-width: $breakPoint) {
+    display: block;
+  }
+}
+
+@media all and (min-width: $breakPoint) {
+  .onlySP {
+    display: none !important;
+  }
+}
+
+.valignTop {
+  vertical-align: top !important;
+}
+
+.valignBottom {
+  vertical-align: bottom !important;
+}
+
+.valignMiddle {
+  vertical-align: middle !important;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+$num: 5;
+
+@for $i from 0 through 10 {
+  .mt#{$i * $num} {
+    margin-top: #{$i * $num}px !important;
+  }
+
+  .mr#{$i * $num} {
+    margin-right: #{$i * $num}px !important;
+  }
+
+  .mb#{$i * $num} {
+    margin-bottom: #{$i * $num}px !important;
+  }
+
+  .ml#{$i * $num} {
+    margin-left: #{$i * $num}px !important;
+  }
+
+  .pt#{$i * $num} {
+    padding-top: #{$i * $num}px !important;
+  }
+
+  .pr#{$i * $num} {
+    padding-right: #{$i * $num}px !important;
+  }
+
+  .pb#{$i * $num} {
+    padding-bottom: #{$i * $num}px !important;
+  }
+
+  .pl#{$i * $num} {
+    padding-left: #{$i * $num}px !important;
+  }
+}
+
+#app{
+  width: 1000px;
+  margin: 20px auto 50px;
+}
+h1{
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  color: #3d3d3d;
+  background: #ffd7cd;
+  padding: 10px 0;
+}
+.numPanel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  width: 359px;
+  margin-top: 30px;
+}
+.numPanel>button {
+  width: 80px;
+  height: 80px;
+  background: #f6bd1a;
+  color: #fff;
+  font-size: 50px;
+  margin: 0 0 20px 20px;
+  cursor: pointer;
+  &:nth-of-type(3n+1){
+    margin-left: 0;
+  }
+  &:hover{
+    opacity: 0.8;
+  }
+  &:disabled{
+    background:#8f6c09;
+    cursor: auto;
+  }
+}
+#overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(56,56,56,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .content {
+    z-index: 2;
+    width: 700px;
+    padding: 25px;
+    background: #fff;
+    box-sizing: border-box;
+    font-size:16px;
+    position: relative;
+  }
+  .close{
+    right: 5px;
+    top: 5px;
+    position: absolute;
+    span{
+      font-size:34px;
+      color: #666;
+      cursor: pointer;
+    }
+  }
+}
+
+.modalFade-enter {
+  opacity: 0;
+}
+.modalFade-enter-to {
+  opacity: 1;
+}
+.modalFade-leave {
+  opacity: 1;
+}
+.modalFade-leave-to {
+  opacity: 0;
+}
+.modalFade-leave-active,.modalFade-enter-active {
+  transition: opacity 300ms ease-out;
+}
+.ruleBtn{
+  text-align: right;
+  button{
+    background: #474747;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: right;
+    display: inline-block;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
+.startBtn{
+  text-align: center;
+  margin-top: 50px;
+  button{
+    background: #EC576B;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 30px;
+    border-radius: 10px;
+    text-align: right;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
+.gameBlock{
+  margin-top: 40px;
+  display: flex;
+  justify-content:center;
+}
+.inputNum{
+  text-align: center;
+  display: block;
+  width: 200px;
+  margin: 0px auto;
+  border: 2px solid #6c6c6c;
+  background: #fff;
+  height: 50px;
+  border-radius: 7px;
+  font-size: 30px;
+}
+.btnBlock{
+  display: flex;
+  margin: 25px auto 0;
+  justify-content: center;
+  >button{
+    width: 220px;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+  .resetBtn{
+    background: #ffffff;
+    border: 2px solid #2b7aa1;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    color: #2b7aa1;
+    margin-right: 25px;
+  }
+  .sendBtn{
+    background: #2b7aa1;
+    border: 2px solid #2b7aa1;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+  }
+}
+.inputBlock{
+  width: 600px;
+}
+.resultBlock{
+  width: 300px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 15px;
+  box-sizing: border-box;
+  .resultHead{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+.resultList{
+  margin-top: 20px;
+  >li{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
