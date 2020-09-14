@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>無題ドキュメント</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue Numbers</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="style.css" rel="stylesheet" type="text/css">
@@ -52,8 +53,8 @@
 					</div>
 					<div v-else>
 						<div class="btnBlock">
-							<button class="resetBtn" v-on:click="reset">リセット</button>
-							<button class="sendBtn" v-on:click="send">答える</button>
+							<button v-if="!cleared" class="resetBtn" v-on:click="reset">リセット</button>
+							<button v-if="!cleared" class="sendBtn" v-on:click="send">答える</button>
 						</div>
 					</div>
 				</div>
@@ -61,13 +62,10 @@
 			<div class="resultBlock">
 				<p class="resultHead">回答結果</p>
 				<ul class="resultList" v-if="0<answeredCount">
-					<li v-for="item in answerList">答え{{item.out}}：結果{{item.Eat}}EAT {{item.Bite}}BITE</li>
+					<li v-for="item in answerList">答え：{{item.out}}　<br class="onlySP">結果：{{item.Eat}}EAT {{item.Bite}}BITE</li>
 				</ul>
 			</div>
-			<p v-if="cleared">正解です！{{answeredCount}}回で正解</p>
-		</div>
-		{{ $data }}
-		
+		</div>	
 	</div>
 	<script src="main.js"></script>
 </body>

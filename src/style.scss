@@ -179,33 +179,50 @@ $num: 5;
 }
 
 #app{
-  width: 1000px;
-  margin: 20px auto 50px;
+  width: calc(100% - 20px);
+  margin :20px 10px 50px;
+  @media all and (min-width: $breakPoint) {
+    width: 1000px;
+    margin: 20px auto 50px;
+  }
 }
 h1{
   text-align: center;
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: bold;
   color: #3d3d3d;
   background: #ffd7cd;
   padding: 10px 0;
+  @media all and (min-width: $breakPoint) {
+    font-size: 40px;
+  }
 }
 .numPanel {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  width: 359px;
-  margin-top: 30px;
+  width: 100%;
+  margin-top: 15px;
+  @media all and (min-width: $breakPoint) {
+    width: 359px;
+    margin-top: 30px;
+  }
 }
 .numPanel>button {
-  width: 80px;
-  height: 80px;
+  width: calc(33% - 5px);
+  height: 50px;
   background: #f6bd1a;
   color: #fff;
-  font-size: 50px;
-  margin: 0 0 20px 20px;
+  font-size: 36px;
+  margin: 0 0 5px 5px;
   cursor: pointer;
+  @media all and (min-width: $breakPoint) {
+    width: 80px;
+    height: 80px;
+    margin: 0 0 20px 20px;
+    font-size: 50px;
+  }
   &:nth-of-type(3n+1){
     margin-left: 0;
   }
@@ -230,12 +247,15 @@ h1{
   justify-content: center;
   .content {
     z-index: 2;
-    width: 700px;
+    width: calc(100% - 20px);
     padding: 25px;
     background: #fff;
     box-sizing: border-box;
     font-size:16px;
     position: relative;
+    @media all and (min-width: $breakPoint) {
+      width: 700px;
+    }
   }
   .close{
     right: 5px;
@@ -286,13 +306,17 @@ h1{
   button{
     background: #EC576B;
     color: #fff;
-    padding: 15px 30px;
-    font-size: 30px;
+    padding: 10px 20px;
+    font-size: 24px;
     border-radius: 10px;
     text-align: right;
     display: inline-block;
     cursor: pointer;
     font-weight: bold;
+    @media all and (min-width: $breakPoint) {
+      font-size: 30px;
+      padding: 15px 30px;
+    }
     &:hover{
       opacity: 0.8;
     }
@@ -306,20 +330,32 @@ h1{
 .inputNum{
   text-align: center;
   display: block;
-  width: 200px;
+  width: 100%;
   margin: 0px auto;
   border: 2px solid #6c6c6c;
   background: #fff;
-  height: 50px;
   border-radius: 7px;
   font-size: 30px;
+  box-sizing: border-box;
+  @media all and (min-width: $breakPoint) {
+    width: 200px;
+    height: 50px;
+  }
 }
 .btnBlock{
   display: flex;
   margin: 25px auto 0;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  @media all and (min-width: $breakPoint) {
+    flex-direction: row;
+  }
   >button{
-    width: 220px;
+    width: 100%;
+    @media all and (min-width: $breakPoint) {
+      width: 220px;
+    }
     &:hover{
       opacity: 0.8;
     }
@@ -333,7 +369,10 @@ h1{
     font-weight: bold;
     font-size: 18px;
     color: #2b7aa1;
-    margin-right: 25px;
+    margin-top: 10px;
+    @media all and (min-width: $breakPoint) {
+      margin: 0 25px 0 0;
+    }
   }
   .sendBtn{
     background: #2b7aa1;
@@ -347,25 +386,42 @@ h1{
   }
 }
 .inputBlock{
-  width: 600px;
+  width: 50%;
+  @media all and (min-width: $breakPoint) {
+    width: 600px;   
+  }
 }
 .resultBlock{
-  width: 300px;
+  width: calc(50% - 10px);
   border: 1px solid #aaa;
   border-radius: 6px;
-  padding: 15px;
+  padding: 10px;
   box-sizing: border-box;
+  margin-left: 10px;
+  @media all and (min-width: $breakPoint) {
+    width: 300px;
+    margin: 0;
+    padding: 15px;
+  }
   .resultHead{
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
+    @media all and (min-width: $breakPoint) {
+      font-size: 24px;
+    }
   }
 }
 .resultList{
   margin-top: 20px;
   >li{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    @media all and (min-width: $breakPoint) {
+      font-size: 16px;
+      margin-bottom: 5px;
+      text-align: center;
+    }
   }
 }
