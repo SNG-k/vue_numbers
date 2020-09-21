@@ -4,22 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vue Numbers</title>
+<style type="text/css">
+[v-cloak] {
+　display: none;
+}
+</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="style.css" rel="stylesheet" type="text/css">
-	<style>
-	[v-cloak] {
-	  display: none;
-	}
-	</style>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 	<h1>Vue Numbers</h1>
 	<div id="app">
 		<div class="ruleBtn"><button v-on:click="ruleShow = !ruleShow">>ルールを見る</button></div>
-		<transition name="modalFade" v-cloak>
-			<div id="overlay" v-on:click.self="ruleShow = !ruleShow" v-if="ruleShow">
+		<transition name="modalFade">
+			<div id="overlay" v-on:click.self="ruleShow = !ruleShow" v-if="ruleShow" v-cloak>
 				<div class="content">
 					<slot name="aa">
 						<button class="close" v-on:click="ruleShow = !ruleShow"><span class="material-icons">close</span></button>
@@ -44,7 +45,7 @@
 		</transition>
 
 		<div v-if="!start" class="startBtn"><button v-on:click="startBtn">スタート！</button></div>
-		<div v-if="start" class="gameBlock">
+		<div v-if="start" class="gameBlock" v-cloak>
 			<div class="inputBlock">
 				<input class="inputNum" type="tel" maxlength="3" v-model="inputNumber" disabled>
 				<div>
@@ -59,7 +60,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="resultBlock">
+			<div class="resultBlock" v-cloak>
 				<p class="resultHead">回答結果</p>
 				<ul class="resultList" v-if="0<answeredCount">
 					<li v-for="item in answerList">答え：{{item.out}}　<br class="onlySP">結果：{{item.Eat}}EAT {{item.Bite}}BITE</li>
